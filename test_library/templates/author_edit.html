@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="" method="post">
+
+    <p> 作者姓名： <input type="text" name="author_name" value="{{ author_obj.name }}"></p>
+    <p> 作品：
+        <select name="books" id="" multiple>
+            {% for book in all_books %}
+                {#        如果所有书籍有毒书籍在作者的书籍里         #}
+                {% if book in author_obj.books.all %}
+                    {#        选中效果            #}
+                    <option value="{{ book.pk }}" selected>{{ book.title }}</option>
+                {% else %}
+                    <option value="{{ book.pk }}">{{ book.title }}</option>
+                {% endif %}
+
+            {% endfor %}
+
+        </select>
+    </p>
+
+    <button>提交</button>
+
+</form>
+</body>
+</html>

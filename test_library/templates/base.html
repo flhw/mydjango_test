@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% load static %}
+
+{#    <link rel="stylesheet" href="/static/plugins/bootstrap-3.3.7-dist/css/bootstrap.css">#}
+    <link rel="stylesheet" href="{% static 'plugins/bootstrap-3.3.7-dist/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% get_static_prefix %}css/dsb.css">
+
+    {% block css %}
+
+    {% endblock %}
+
+    <style>
+        .table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
+            padding: 8px;
+            line-height: 1.42857143;
+            vertical-align: middle;
+            border-top: 1px solid #ddd;
+        }
+    </style>
+
+</head>
+<body>
+
+{% include 'nav.html' %}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+            <ul class="nav nav-sidebar">
+{#                <li {% block pub_active %}  {% endblock %} ><a href="{% url 'publisher' %}">出版社列表</a></li>#}
+{#                <li {% block book_active %}  {% endblock %}><a href="{% url 'book' %}">书籍列表</a></li>#}
+{#                <li {% block author_active %}  {% endblock %}><a href="{% url 'author' %}">作者列表</a></li>#}
+                  <li><a href="{% url 'publisher' %}">出版社列表</a></li>
+                  <li><a href="{% url 'book' %}">书籍列表</a></li>
+            </ul>
+
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            {% block content %}
+                <h2>展示出版社</h2>
+            {% endblock %}
+        </div>
+    </div>
+</div>
+
+
+<script src="{% static 'js/jquery.3.4.1.min.js' %}"></script>
+<script src="{% static 'js/sweetalert.min.js' %}"></script>
+
+{% block js %}
+
+{% endblock %}
+</body>
+</html>

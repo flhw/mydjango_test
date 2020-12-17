@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block css %}
+
+{% endblock %}
+
+{% block book_active %}
+    class = "active"
+{% endblock %}
+
+{% block content %}
+    <h2 class="sub-header">展示书籍</h2>
+    <a href="{% url 'book_add' %}" class="btn btn-sm btn-primary">新增</a>
+        <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>序号</th>
+                <th>书名</th>
+                <th>出版社</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for book in all_books %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>《{{ book.title }}》</td>
+{#                    <td>#}
+{#                        {% for author in  book.author_set.all %}#}
+{#                            {{ author.name }}#}
+{#                        {% endfor %}#}
+{##}
+{#                    </td>#}
+                    <td>{{ book.pub }}</td>
+                    <td>
+{#                        <a class="btn btn-sm btn-danger" href="{% url 'book_del' book.pk %}">删除</a>#}
+                        <a class="btn btn-sm btn-success" href="/app01/book_del/?id={{ book.pk }}">删除</a>
+                        <a class="btn btn-sm btn-success" href="/app01/book_edit/?id={{ book.pk }}">编辑</a>
+
+
+                    </td>
+                </tr>
+
+            {% endfor %}
+
+
+            </tbody>
+
+        </table>
+    </div>
+
+{#    {% load xxxx %}#}
+{#    {% page 3 %}#}
+
+{% endblock %}

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="" method="post">
+    {% csrf_token %}
+    <p>
+        书名： <input type="text" name="book_name">
+    </p>
+    <p>
+        出版社：
+        <select name="pub_id" id="">
+
+            {% for publisher in all_publishers %}
+                <option value="{{ publisher.pk }}"> {{ publisher.name }} </option>
+            {% endfor %}
+
+        </select>
+    </p>
+    <button>新增</button>
+</form>
+</body>
+</html>

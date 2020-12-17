@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h5>作者列表</h5>
+
+<table border="1">
+    <a href="/app01/author_add/">新增</a>
+    <thead>
+    <tr>
+        <th>序号</th>
+        <th>id</th>
+        <th>姓名</th>
+        <th>代表作</th>
+{#        <th>操作</th>#}
+    </tr>
+    </thead>
+    <tbody>
+    {% for author in all_authors %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ author.pk }}</td>
+            <td>{{ author.name }}</td>
+            <td>
+                {% for book in author.books.all %}
+
+                    {% if forloop.last %}
+                        {#   如果是最后一位不加顿号，如果不是加顿号    #}
+                        《{{ book.title }}》
+                    {% else %}
+                        《{{ book.title }}》、
+                    {% endif %}
+
+                {% endfor %}
+            </td>
+            <td>
+                <a href="/app01/author_del/?pk={{ author.pk }}">删除</a>
+                <a href="/app01/author_edit/?pk={{ author.pk }}">编辑</a>
+            </td>
+
+        </tr>
+    {% endfor %}
+
+
+    </tbody>
+</table>
+
+
+</body>
+</html>
