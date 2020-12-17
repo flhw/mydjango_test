@@ -10,7 +10,6 @@ urlpatterns = [
     url(r'^book_add/', views.book_add,name='book_add'),
     url(r'^book_del/', views.book_del),
     url(r'^book_edit/', views.book_edit),
-    url(r'^book_edit/', views.book_edit),
     url(r'^author_list/', views.author_list,name='author'),
     url(r'^author_add/', views.author_add),
     url(r'^author_del/', views.author_del),
